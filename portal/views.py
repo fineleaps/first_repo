@@ -1,19 +1,36 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.views.generic import View, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Executive
 
 
-# @login_required
-def home(request):
-    if request.user.is_superuser:
-        return redirect('crm_admin:home')
-    else:
+class HomeView(LoginRequiredMixin, View):
+
+    # def get(self, request):
+    #     if request.user.is_superuser:
+    #         return redirect('crm_admin:home')
+    #     else:
+    #         return render(request, 'portal/home.html')
+    def get(self, request):
         return render(request, 'portal/home.html')
 
 
-@login_required
-def profile(request):
+class ProfileView(LoginRequiredMixin, DetailView):
 
-    abcd = {}
+    template_name = "portal/profile.html"
+    context_object_name = "executive"
 
-    return render(request, 'portal/profile.html', abcd)
+    def get_object(self, queryset=None):
+        return self.request.user.executive
 
+
+#
+# e
+# @login_required
+# def profile(request):
+#
+#     context = {"executive": }
+#
+#     return render(rquest, 'portal/profile.html', context)
+#

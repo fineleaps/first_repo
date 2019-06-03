@@ -5,11 +5,20 @@
 {% block content %}
 
     <div class="jumbotron text-center">
-        <h3>Profile | {{ user.username }}</h3>
+        <h3>Profile | {{ executive.get_display_name }}</h3>
 
         <hr>
 
-        <h5>{{ my_name }}</h5>
+        <p>Employee id : {{ executive.get_employee_id }}</p>
+
+        <table class="table">
+            <tr>
+                <td>Full Name</td>
+                <td>{{ executive.get_full_name }}</td>
+            </tr>
+        </table>
+
+
 
 
 
