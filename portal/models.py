@@ -3,9 +3,18 @@ from django.conf import settings
 from django.utils import timezone
 import datetime
 from django.db.models.signals import post_save
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User as Django_User_Model
 
-USER_MODEL = User
+User_Model = Django_User_Model
+#
+# class User(Django_User_Model):
+#
+#     class Meta:
+#         proxy = True
+#         # ordering = ('first_name', )
+#
+#     def get_display_name(self):
+#         return self.executive.first_name
 
 
 def create_executive(instance, sender, *args, **kwargs):
@@ -13,11 +22,11 @@ def create_executive(instance, sender, *args, **kwargs):
         Executive.objects.create(user=instance)
 
 
-post_save.connect(create_executive, sender=USER_MODEL)
+post_save.connect(create_executive, sender=Django_User_Model)
 
 
 class Executive(models.Model):
-    user = models.OneToOneField(USER_MODEL, on_delete=models.PROTECT)
+    user = models.OneToOneField(User_Model, on_delete=models.PROTECT)
 
     first_name = models.CharField(max_length=32, blank=True)
     last_name = models.CharField(max_length=32, blank=True)
