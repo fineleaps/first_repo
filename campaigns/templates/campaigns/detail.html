@@ -1,0 +1,16 @@
+{% extends "portal/base.html" %}
+
+{% block title %}Campaigns{% endblock %}
+
+{% block content %}
+
+    {%  if campaign %}
+            <button class="btn bg-blue">{{ campaign.get_display_name }}</button>
+            <button class="btn bg-blue">{{ campaign.script }}</button>
+            <button class="btn bg-blue">{{ campaign.details }}</button>
+
+    {% else %}
+        <span class="alert alert-warning">No Campaigns</span>
+    {% endif %}
+
+{% endblock %}

@@ -8,7 +8,10 @@ app_name = "campaigns"
 
 urlpatterns = [
 
-    # url(r'^campaign/list/$', views.CampaignListView.as_view(), name='campaign_list'),
-    # path('campaign/detail/<int:pk>/', views.CampaignDetailView.as_view(), name='campaign_detail'),
+    url(r'^list/$', views.CampaignListView.as_view(), name='list'),
+    url(r'^detail/(?P<slug>[-\w]+)/$', views.CampaignDetailView.as_view(), name="detail"),
+    # url('(?P<slug>[-\w]+)/(?P<pk>\d+)/$', views.posts, name='posts'),
+
+    # path('campaign/detail/<slug:slug>/', views.CampaignDetailView.as_view(), name='detail'),
 
 ]

@@ -1,0 +1,15 @@
+{% extends "portal/base.html" %}
+
+{% block title %}Campaigns{% endblock %}
+
+{% block content %}
+
+    {%  if campaigns %}
+        {% for campaign in campaigns %}
+            <a href="{% url "campaigns:detail" slug=campaign.slug %}"><button class="btn bg-blue">{{ campaign.get_display_name }}</button></a>
+        {% endfor %}
+    {% else %}
+        <span class="alert alert-warning">No Campaigns</span>
+    {% endif %}
+
+{% endblock %}

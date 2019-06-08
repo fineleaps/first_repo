@@ -20,9 +20,9 @@ from django.conf.urls import url, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'', include('portal.urls', namespace='portal')),
-    url(r'crm_admin', include('crm_admin.urls', namespace='crm_admin')),
-    url(r'prospects', include('prospects.urls', namespace='prospects')),
-    url(r'campaigns', include('campaigns.urls', namespace='campaigns')),
-    url(r'results', include('results.urls', namespace='results')),
+    url(r'crm_admin/', include('crm_admin.urls', namespace='crm_admin')),
+    url(r'prospects/', include('prospects.urls', namespace='prospects')),
+    url(r'campaigns/', include('campaigns.urls', namespace='campaigns')),
+    url(r'results/', include('results.urls', namespace='results')),
 
 ]
