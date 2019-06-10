@@ -5,6 +5,7 @@ from django.utils.text import slugify
 
 class Campaign(models.Model):
     name = models.CharField(max_length=64)
+    aim = models.CharField(max_length=128, blank=True)
     slug = models.SlugField(blank=True)
     is_active = models.BooleanField(default=True)
     script = models.TextField(blank=True)
@@ -16,6 +17,17 @@ class Campaign(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def get_aim(self):
+        if self.aim:
+            return self.aim
+        else:
+            return "Aim not set."
+
+    @property
+    def get_short_form(self):
+        return self.name[:15]
 
     @property
     def get_display_name(self):
