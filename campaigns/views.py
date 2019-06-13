@@ -24,7 +24,7 @@ class CampaignDetailView(LoginRequiredMixin, DetailView):
 
     def get_object(self, queryset=None):
         campaign = super().get_object()
-        if self.request.user.executive in campaign.executives.all():
+        if self.request.user.executive  in campaign.executives.all():
             return campaign
         else:
             raise Http404("No Campaign Found")
