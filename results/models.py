@@ -15,7 +15,7 @@ class Result(models.Model):
     def __str__(self):
         return "{} -{} - {}".format(self.prospect_campaign_relation.prospect, self.prospect_campaign_relation.campaign,
                               self.result_choice)
-
-    def clean(self):
-        if not self.prospect_campaign_relation.attempted:
-            raise ValidationError('Prospect must be attempted to save attempt result')
+    #
+    # def clean(self):
+    #     if self.prospect_campaign_relation and not self.prospect_campaign_relation.attempted:
+    #         raise ValidationError('Prospect must be attempted to save attempt result')

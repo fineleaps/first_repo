@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save, pre_save
 from django.utils.text import slugify
+from django.http import HttpResponse
 
 
 class Campaign(models.Model):
@@ -30,7 +31,7 @@ class Campaign(models.Model):
         return self.name[:15]
 
     @property
-    def get_display_name(self):
+    def get_display_text(self):
         return self.name
     #
     # @property
@@ -45,8 +46,9 @@ class Campaign(models.Model):
     def prospects_non_attempted(self):
         return self.prospects.filter(prospectcampaignrelation__attempted=False)
 
+    @property
     def prospect_get(self):
-        f_prospect = self.prospects_non_attempted().first()
+        f_prospect = self.prospects_non_attempted.first()
         if f_prospect:
             f_prospect.prospectcampaignrelation.make_attempted()
             return f_prospect

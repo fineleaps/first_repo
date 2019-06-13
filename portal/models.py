@@ -13,7 +13,7 @@ User_Model = Django_User_Model
 #         proxy = True
 #         # ordering = ('first_name', )
 #
-#     def get_display_name(self):
+#     def get_display_text(self):
 #         return self.executive.first_name
 
 
@@ -40,7 +40,7 @@ class Executive(models.Model):
         return self.user.__str__()
 
     @property
-    def get_display_name(self):
+    def get_display_text(self):
         if self.first_name:
             return self.first_name
         else:

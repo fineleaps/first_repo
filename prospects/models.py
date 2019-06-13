@@ -23,12 +23,13 @@ class Prospect(models.Model):
         return self.first_name + ' ' + self.last_name
 
     @property
-    def get_display_name(self):
+    def get_display_text(self):
         return self.full_name
 
     def __str__(self):
         return self.full_name
 
+    @property
     def campaigns_assigned(self):
         return self.campaign_set.all()
 

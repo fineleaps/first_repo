@@ -1,6 +1,6 @@
 {% extends "portal/base.html" %}
 
-{% block title %}{{ executive.get_display_name }} | Profile{% endblock %}
+{% block title %}{{ executive.get_display_text }} | Profile{% endblock %}
 
 {% block content %}
     <br><br>
@@ -17,7 +17,7 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
                                         <div class="address-hr">
-                                            <p><b>Name</b><br />{{ executive.get_display_name }}</p>
+                                            <p><b>Name</b><br />{{ executive.get_display_text }}</p>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
@@ -457,7 +457,7 @@
 
 
 {#    <div class="container text-center">#}
-{#        <h3>Profile | {{ executive.get_display_name }}</h3>#}
+{#        <h3>Profile | {{ executive.get_display_text }}</h3>#}
 {##}
 {#        <hr>#}
 {##}

@@ -1,7 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DeleteView, UpdateView, FormView, DetailView
 from .models import Campaign, ProspectCampaignRelation
-from prospects.models import Prospect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 
@@ -28,3 +27,11 @@ class CampaignDetailView(LoginRequiredMixin, DetailView):
             return campaign
         else:
             raise Http404("No Campaign Found")
+
+
+def prospect_get(request, slug):
+    campaign = get_object_or_404(Campaign, slug=slug, executives__in=(request.user.executive, ))
+    prospect = campaign.prospect_get
+    context = {'prospect': prospect, 'campaign': campaign}
+    return render(request, 'campaigns/prospect_get.html', context)
+
