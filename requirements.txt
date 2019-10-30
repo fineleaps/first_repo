@@ -1,4 +1,4 @@
-django==2
+django==2.0.12
 django-phone-field
 django-admin-list-filter-dropdown
 django-crispy-forms
